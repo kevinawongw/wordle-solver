@@ -34,7 +34,7 @@ def main():
         guess = init_guess
     found_letters = []
     count = 1
-    print("\nf'Initial Guess: {guess}")
+    print(f"\nInitial Guess: {guess}")
 
     print("\n-   _ indicating incorrect\n-   * indicating correct letter, incorrect spot\n")
     print("-   Any letter indicating correct value/spot\n(ie. _ _ _ * K)\n\n")
@@ -53,7 +53,7 @@ def main():
             return "no more guesses.."
         else:
             guess = random.choice(init_pool)
-        print("\nf'Next Guess: {guess}")
+        print(f"\nNext Guess: {guess}")
         result = input("Input Result:")
         result = insist_correct(result)
 
