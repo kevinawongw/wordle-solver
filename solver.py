@@ -1,6 +1,10 @@
-
+"""
+    Wordle solver.
+"""
 def wordle_solver(guess, result, init_pool,found_letters):
-    
+    """
+        Wordle Sovler
+    """
     letters = [*guess]
     results = [*result]
     count = 0
