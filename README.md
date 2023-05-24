@@ -1,6 +1,8 @@
 # Wordle Solver
 ### About: 
 Wordle Solver allows one to mindlessly win wordle :-)
+
+(in hard mode!!)
 ### Usage:
 To use, run  `python3 .\main.py`
 ### Options:
