@@ -17,14 +17,13 @@ def wordle_solver(guess, result, init_pool,found_letters):
         if i == "_":
             if j not in found_letters:
                 ending_pool=[word for word in init_pool if j not in word]
-                init_pool = ending_pool
+            else:
+                ending_pool=[word for word in init_pool if j in word and word[count]!=j]
         elif i == "*":
             ending_pool=[word for word in init_pool if j in word and word[count]!=j]
-            init_pool = ending_pool
         else:
             ending_pool=[word for word in init_pool if j in word and word[count]==j]
-            init_pool = ending_pool
-
+        init_pool = ending_pool
         count+=1
 
     return ending_pool,found_letters

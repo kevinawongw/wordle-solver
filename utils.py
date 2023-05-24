@@ -1,6 +1,7 @@
 """
     Helper funcs and other utils.
 """
+import random
 import re
 
 def check_string(string):
@@ -30,4 +31,17 @@ def insist_correct(result):
         print("Invalid format. Please try agian.")
         result = input("Input Result:")
     return result
-    
+
+def weighted_random_word(word_list):
+    """
+        Weighted random word. Favors vowels
+    """
+    weights = []
+    for word in word_list:
+        vowel_count = sum(1 for char in word if char.lower() in 'aeiou')
+        unique_chars = len(set(word.lower()))
+        weight = vowel_count + unique_chars
+        weights.append(weight)
+
+    selected_word = random.choices(word_list, weights=weights)[0]
+    return selected_word

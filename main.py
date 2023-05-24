@@ -2,8 +2,7 @@
     main.py
 """
 import argparse
-import random
-from utils import check_string,insist_correct,read_words
+from utils import check_string, insist_correct, read_words, weighted_random_word
 from solver import wordle_solver
 
 def get_args():
@@ -28,8 +27,8 @@ def main():
     init_guess = args.init
     words = list(read_words("words.txt"))
     if not check_string(init_guess):
-        print("Initial guess was not a valid option. Selecting random starting word.")
-        guess = random.choice(words)
+        print("Selecting random starting word.")
+        guess = weighted_random_word(words)
     else:
         guess = init_guess
     found_letters = []
@@ -44,7 +43,10 @@ def main():
     init_pool = words
 
     while "_" in result or "*" in result:
+        if guess in init_pool:
+            init_pool.remove(guess)
         ending_pool,found_letters = wordle_solver(guess,result,init_pool,found_letters)
+
         init_pool = ending_pool
         print(ending_pool)
         if len(ending_pool) == 1:
@@ -52,13 +54,13 @@ def main():
         elif len(ending_pool) == 0:
             return "no more guesses.."
         else:
-            guess = random.choice(init_pool)
+            guess = weighted_random_word(ending_pool)
         print(f"\nNext Guess: {guess}")
         result = input("Input Result:")
         result = insist_correct(result)
 
         count+=1
-        if count==6:
+        if count>6:
             print("sorry:(")
             return
 
