@@ -15,7 +15,9 @@ At each round, you will be asked to input the result of the guess. Use the follo
 | `_`    | Grey   | Incorrect letter                   |
 | `*`    | Yellow | Correct letter, incorrect location |
 | `a-z`  | Greeen | Correct letter and location        |
-#### Example: For this example, say the correct wordle answer is `rocky`. Upon entering the guess `wormy`, you would enter the input: `_o*_y`.
+#### Example:
+
+For this example, say the correct wordle answer is `rocky`. Upon entering the guess `wormy`, you would enter the input: `_o*_y`.
 
 ### Options:
 The following flag(s) are available:
